@@ -1,0 +1,37 @@
+Minimum sum of squares of character counts in a given string after removing k characters
+import java.util.*;
+public class Practice 
+{
+	static int minStringValue(String str, int k) 
+    { 
+		int l = str.length();
+		int sum=0;
+		int frequency[]= new int[26];
+		for(int i=0;i<l;i++)
+		{
+			frequency[str.charAt(i)-'a']++;
+		}
+		PriorityQueue<Integer> minheap = new PriorityQueue<>(Collections.reverseOrder());
+		for(int i=0;i<frequency.length;i++)
+		{
+			if(frequency[i]!=0)
+			     minheap.add(frequency[i]);
+		}
+		while(k!=0)
+		{
+			minheap.add(minheap.poll()-1);
+			k--;
+		}
+		while(!minheap.isEmpty())
+		{
+			sum=sum+minheap.peek()*minheap.poll();
+		}
+		return sum;
+    }
+	public static void main(String[] args) 
+	{
+		String str = "abbccc";
+        int k = 2;
+        System.out.println(minStringValue(str,k));
+	}
+}
