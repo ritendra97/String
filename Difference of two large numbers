@@ -1,5 +1,8 @@
-//Difference of two large numbers
-static boolean isSmaller(String str1, String str2)
+//Difference of tow large numbers
+import java.util.*;
+public class Practice 
+{
+	static boolean isSmaller(String str1, String str2)
     {
         // Calculate lengths of both string
         int n1 = str1.length(), n2 = str2.length();
@@ -66,3 +69,4 @@ static boolean isSmaller(String str1, String str2)
         String str2 = "12977";
         System.out.println(findDiff(str1, str2));
 	}
+}
