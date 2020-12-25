@@ -8,6 +8,19 @@ public class Practice
 		int len2 = num2.length();
 		if(len1==0 || len2==0)
 			return "0";
+            if(str1.charAt(0)=='-' && str2.charAt(0)!='-')
+	    	str1=str1.substring(1);
+		len1--;
+	    else if(str1.charAt(0)!='-' && str2.charAt(0)=='-')
+	    	str2=str2.substring(1);
+		len2--;
+	    else if(str1.charAt(0)=='-' && str2.charAt(0)=='-')
+	    	{
+		     str1=str1.substring(1);
+		     len1--;
+	    	   str2=str2.substring(1);
+		   len2--;
+		}
 		int result[] = new int[len1+len2];
 		int i_n1 = 0;  
 	    int i_n2 = 0;
@@ -40,15 +53,8 @@ public class Practice
 	}
 	public static void main(String[] args) 
 	{
-		String str1 = "1235421415454545454545454544"; 
-	    String str2 = "1714546546546545454544548544544545";
-	    if(str1.charAt(0)=='-' && str2.charAt(0)!='-')
-	    	str1=str1.substring(1);
-	    else if(str1.charAt(0)!='-' && str2.charAt(0)=='-')
-	    	str2=str2.substring(1);
-	    else if(str1.charAt(0)=='-' && str2.charAt(0)=='-')
-	    	str1=str1.substring(1);
-	    	str2=str2.substring(1);
+	    String str1 = "1235421415454545454545454544"; 
+	    String str2 = "1714546546546545454544548544544545"
 	    System.out.println(multiply(str1, str2));
 	}
 }
