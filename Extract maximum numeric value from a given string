@@ -1,0 +1,57 @@
+//Extract maximum numeric value from a given string 
+import java.util.regex;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Practice 
+{
+	static int extractMaximum(String str) 
+	{
+		String reex = "\\d+";
+		Pattern p = Pattern.compile(reex);
+		Matcher m = p.matcher(str);
+		int max=0;
+		while(m.find())
+		{
+			int num = Integer.parseInt(m.group());
+			if(num>max)
+				max=num;
+		}
+		return max;
+	}
+	public static void main(String[] args) 
+	{
+		String str = "100klh564abc365bg"; 
+        System.out.println(extractMaximum(str));
+	}
+}
+
+But above program wouldn’t work if number is greater that integer range. You can try parseLong() method for numbers upto long range.
+But to handle the case of large numbers(greater than long range) we can take help of BigInteger class in java. 
+Below is the java program to demonstrate the same.
+
+import java.util.regex;
+import java.math.BigInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Practice 
+{
+	static BigInteger extractMaximum(String str) 
+	{
+		String reex = "\\d+";
+		Pattern p = Pattern.compile(reex);
+		Matcher m = p.matcher(str);
+		BigInteger max= BigInteger.ZERO;
+		while(m.find())
+		{
+			BigInteger num = new BigInteger(m.group());
+			if(num.compareTo(max)>0)
+				max=num;
+		}
+		return max;
+	}
+	public static void main(String[] args) 
+	{
+		String str = "100klh564abc365bg"; 
+        System.out.println(extractMaximum(str));
+	}
+}
