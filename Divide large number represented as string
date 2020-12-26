@@ -1,0 +1,28 @@
+//Divide large number represented as string
+public class practice 
+{
+	public static String longDivision(String number,int divisor) 
+	{
+		StringBuilder result = new StringBuilder();
+		char[] dividend = number.toCharArray();
+		int carry=0;
+		for(int i=0;i<dividend.length;i++)
+		{
+			int x = carry*10+Character.getNumericValue(dividend[i]);
+			result.append(x/divisor);
+			carry=x%divisor;
+		}
+		for(int i=0;i<result.length();i++)
+		{
+			if(result.charAt(i)!='0')
+				return result.substring(i);
+		}
+		return "";
+	}
+	public static void main(String[] args) 
+	{
+		String number = "1248163264128256512"; 
+        int divisor = 125; 
+        System.out.println(longDivision(number, divisor));
+	}
+}
