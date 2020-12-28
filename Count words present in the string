@@ -1,0 +1,31 @@
+//Count words present in the string
+import java.util.*;
+import java.util.regex;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Practice 
+{
+	static int countOccurrence(String[] word, String str)  
+    {
+		int counter=0;
+		Pattern p = Pattern.compile("[a-zA-Z]+");
+		Matcher m = p.matcher(str);
+		HashSet<String> hs = new HashSet<String>(); 
+		for(String s : word)
+		{
+			hs.add(s);
+		}
+		while(m.find())
+		{
+			if(hs.contains(m.group()))
+				counter++;
+		}
+		return counter;
+    }
+	public static void main(String[] args) 
+	{
+		String word[] = { "welcome", "to", "geeks", "portal"}; 
+        String str = "geeksforgeeks is a computer science portal for geeks."; 
+        System.out.println(countOccurrence(word,str));
+	}
+}
