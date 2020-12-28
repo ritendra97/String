@@ -1,0 +1,27 @@
+//String with k distinct characters and no same characters adjacent
+import java.util.*;
+public class Practice 
+{
+	static String findString(int n, int k) 
+    {
+		int count=0;
+		String res = "";
+		for(int i=0;i<k;i++)
+		{
+			res=res+(char)('a'+i);
+		}
+		for(int i=0;i<n-k;i++)
+		{
+			res = res+(char)('a'+count);
+			count++;
+			if(count==k)
+				count=0;
+		}
+		return res;
+    }
+	public static void main(String[] args) 
+	{
+		int n = 5, k = 2; 
+        System.out.println(findString(n, k));
+	}
+}
