@@ -1,0 +1,24 @@
+//Count substrings with same first and last characters
+public class Practice 
+{
+	static int Max_Char=26;
+	static int countSubstringWithEqualEnds(String s) 
+    {
+		int result=0;
+		int count[] = new int[Max_Char];
+		for(int i=0;i<s.length();i++)
+		{
+			count[s.charAt(i)-'a']++;
+		}
+		for(int i=0;i<Max_Char;i++)
+		{
+			result+=(count[i]*(count[i]+1)/2);
+		}
+		return result;
+    }
+	public static void main(String[] args) 
+	{
+		String s = "abcab"; 
+        System.out.println(countSubstringWithEqualEnds(s));
+	}
+}
