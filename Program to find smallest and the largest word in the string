@@ -1,0 +1,42 @@
+//Program to find smallest and the largest word in the string
+public class Practice 
+{
+	static int si=0;
+	static int ei=0;
+	static int max=Integer.MIN_VALUE;
+	static int min=Integer.MAX_VALUE;
+	static int minstart_index=0;
+	static int maxstart_index=0;
+	static String minword = " ";
+	static String maxword = " ";
+	static void minMaxLengthWords(String input)  
+    {
+		while(ei<=input.length())
+		{
+			while(ei<input.length() && input.charAt(ei)!= ' ')
+			{
+				ei++;
+			}
+			if(min>ei-si)
+			{
+				min=ei-si;
+				minstart_index=si;
+			}
+			if(max<ei-si)
+			{
+				max=ei-si;
+				maxstart_index=si;
+			}
+			si=ei+1;
+			ei++;
+		}
+		minword=input.substring(minstart_index,min+minstart_index);
+		maxword=input.substring(maxstart_index,max+maxstart_index);
+    }
+	public static void main(String[] args) 
+	{
+		String a = "GeeksforGeeks A Computer Science portal for Geeks"; 
+        minMaxLengthWords(a);
+        System.out.print("Minimum length word: " + minword + "\nMaximum length word: "+ maxword);
+	}
+}
