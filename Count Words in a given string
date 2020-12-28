@@ -1,0 +1,32 @@
+//count words in a given string
+import java.util.*;
+public class Practice 
+{
+	static int Out=0;
+	static int In=1;
+	static int countWords(String str) 
+    {
+		int i=0;
+		int ws=0;
+		int state=Out;
+		while(i<str.length())
+		{
+			if(str.charAt(i)==' ' || str.charAt(i)=='\n' || str.charAt(i)=='\t')
+			{
+				state=Out;
+			}
+			else if(state==Out)
+			{
+				state=In;
+				ws++;
+			}
+			i++;
+		}
+		return ws;
+    }
+	public static void main(String[] args) 
+	{
+		String str = "One two       three\n four\tfive  "; 
+        System.out.println("No of words : " + countWords(str));
+	}
+}
