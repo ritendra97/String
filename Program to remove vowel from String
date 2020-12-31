@@ -1,0 +1,25 @@
+//Program to remove vowel from String
+import java.util.*;
+public class Practice 
+{
+	
+	static String remVowel(String str) 
+    {
+		Character vowel[] = {'a','e','i','o','u','A','E','I','O','U'};
+		List<Character> ans = Arrays.asList(vowel);
+		StringBuffer s = new StringBuffer(str);
+		for(int i=0;i<s.length();i++)
+		{
+			if(ans.contains(s.charAt(i)))
+			{
+				s.replace(i, i+1, "");
+			}
+		}
+		return s.toString();
+    }
+	public static void main(String[] args) 
+	{
+        String str = "GeeeksforGeeks - A Computer Science Portal for Geeks";      
+        System.out.println(remVowel(str));
+	}
+}
