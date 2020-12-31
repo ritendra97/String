@@ -1,0 +1,23 @@
+//count consonant in String 
+import java.util.*;
+public class Practice 
+{
+	static boolean isvowel(char ch)
+	{
+		return (ch=='a'|| ch=='e'||ch=='i'||ch=='o'||ch=='u'||ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U');
+	}
+	static void isconsonent(String str)
+	{
+		boolean flag=false;
+		for(int i=0;i<str.length();i++)
+		{
+			if(isvowel(str.charAt(i))==false)
+				System.out.println(str.charAt(i));
+		}
+	}
+	public static void main(String[] args) 
+	{	
+		String str="aamngbi";
+		isconsonent(str);
+	}
+}
