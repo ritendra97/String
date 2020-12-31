@@ -11,7 +11,7 @@ public class Practice
 			if(str.charAt(i)=='1')
 				m++;
 		}
-		return m;
+		return m*(m-1)/2;
     }
 	public static void main(String[] args) 
 	{
