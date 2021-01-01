@@ -1,0 +1,38 @@
+//Length of Longest sub-string that can be removed
+import java.util.*;
+public class Practice 
+{
+	static class Pair
+	{
+		int first;
+		int second;
+		Pair(int first,int second)
+		{
+			this.first=first;
+			this.second=second;
+		}
+	}
+	static int longestNull(String str) 
+    {
+		int maxlen=0;
+		ArrayList<Pair> ans = new ArrayList<>();
+		ans.add(new Pair('@',-1));
+		for(int i=0;i<str.length();i++)
+		{
+			ans.add(new Pair(str.charAt(i),i));
+			while(ans.size()>=3 && ans.get(ans.size()-3).first=='1' && ans.get(ans.size()-2).first=='0' && ans.get(ans.size()-1).first=='0')
+			{
+				ans.remove(ans.size() - 3); 
+                ans.remove(ans.size() - 2); 
+                ans.remove(ans.size() - 1); 
+			}
+			int temp = ans.get(ans.size()-1).second;
+			maxlen = Math.max(maxlen, i - temp); 
+		}
+		return maxlen;
+    }
+	public static void main(String[] args) 
+	{
+		System.out.println(longestNull("1011100000100")); 
+	}	
+}
