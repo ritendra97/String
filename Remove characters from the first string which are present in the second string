@@ -1,0 +1,29 @@
+//Remove characters from the first string which are present in the second string
+import java.util.*;
+public class Practice 
+{
+	static int MAX_CHAR=26;
+	static String removeDirtyChars(String str, String mask_str) 
+    { 
+		String result="";
+		HashSet<Character> set = new HashSet<>();
+		for(int i=0;i<mask_str.length();i++)
+		{
+			set.add(mask_str.charAt(i));
+		}
+		for(int i=0;i<str.length();i++)
+		{
+			if(!set.contains(str.charAt(i)))
+			{
+				result+=str.charAt(i);
+			}
+		}
+		return result;
+    }
+	public static void main(String[] args) 
+	{	
+		String str = "geeksforgeeks"; 
+        String mask_str = "mask"; 
+        System.out.println(removeDirtyChars(str, mask_str)); 
+	}
+}
