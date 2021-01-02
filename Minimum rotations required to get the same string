@@ -1,4 +1,5 @@
 //Minimum rotations required to get the same string
+// This is O(n2) approach
 import java.util.*;
 public class Practice 
 {
