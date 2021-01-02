@@ -1,0 +1,39 @@
+//Find largest word in dictionary by deleting some characters of given string
+import java.util.*;
+public class Practice 
+{
+	static String findLongestString(String dict[],String str) 
+    {
+		int max=0;
+		String ans="";
+		for(int i=0;i<dict.length;i++)
+		{
+			int count=0;
+			String obs = dict[i];
+			int m=0;
+			int n=0;
+			while(m<str.length() && n<obs.length())
+			{
+				if(obs.charAt(n)==str.charAt(m))
+				{
+					count++;
+					n++;
+				}
+				m++;
+			}
+			if(max<count)
+			{
+				max=count;
+				ans=dict[i];
+			}
+			obs="";
+		}
+		return ans;
+    }
+	public static void main(String[] args) 
+	{
+		String dict[] = {"pintu", "geeksfor", "geeksgeeks"," forgeek"};   
+        String str = "geeksforgeeks";
+        System.out.println(findLongestString(dict,str));
+	}
+}
