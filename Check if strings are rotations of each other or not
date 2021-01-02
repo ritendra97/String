@@ -1,0 +1,71 @@
+//Check if strings are rotations of each other or not
+// This is O(n2) method
+import java.util.*;
+public class Practice 
+{
+	static boolean findRotations(String str1,String str2)  
+    {
+		int n=str1.length();
+		String temp =str1+str1;
+		for(int i=1;i<str1.length();i++)
+		{
+			String substring = temp.substring(i,i+str1.length());
+			if(str2.equals(substring))
+				return true;
+		}
+		return false;
+    }
+	public static void main(String[] args) 
+	{
+		String str1 = "EKSGE";
+		String str2 = "GEEKS";
+        System.out.println(findRotations(str1,str2)); 
+	}
+}
+// This is efficient method
+// KMP algorithm’s lps
+import java.util.*;
+public class Practice 
+{
+	static boolean isRotation(String a, String b)
+    {
+		int n = a.length();
+		int m = b.length();
+		if(n!=m)
+			return false;
+		int lps[] = new int[n];
+		int len=0;
+		int i=1;
+		lps[0]=0;
+		while (i < n) {
+            if (a.charAt(i) == b.charAt(len)) {
+                lps[i] = ++len;
+                ++i;
+            }
+            else {
+                if (len == 0) {
+                    lps[i] = 0;
+                    ++i;
+                }
+                else {
+                    len = lps[len - 1];
+                }
+            }
+        }
+ 
+        i = 0;
+ 
+        // match from that rotating point
+        for (int k = lps[n - 1]; k < m; ++k) {
+            if (b.charAt(k) != a.charAt(i++))
+                return false;
+        }
+        return true;
+    }
+	public static void main(String[] args) 
+	{
+		String s1 = "ABACD";
+        String s2 = "CDABA";
+        System.out.println(isRotation(s1, s2));
+	}
+}
