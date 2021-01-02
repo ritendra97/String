@@ -1,0 +1,32 @@
+//Longest common subsequence with permutations allowed
+import java.util.*;
+public class Practice 
+{
+	 static String result = "";
+	 static String longestString(String str1, String str2) 
+	 {
+		 int c1[] = new int[26];
+		 int c2[] = new int[26];
+		 for(int i=0;i<str1.length();i++)
+		 {
+			 c1[str1.charAt(i)-'a']++;
+		 }
+		 for(int i=0;i<str2.length();i++)
+		 {
+			 c2[str2.charAt(i)-'a']++;
+		 }
+		 for(int i=0;i<26;i++)
+		 {
+			 for(int j=1;j<=Math.min(c1[i], c2[i]);j++)
+			 {
+				 result+=(char)('a'+i);
+			 }
+		 }
+		 return result;
+	 }
+	public static void main(String[] args) 
+	{
+		String str1 = "working", str2 = "women"; 
+        System.out.print(longestString(str1, str2));
+	}
+}
