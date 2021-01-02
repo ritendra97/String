@@ -1,0 +1,57 @@
+//Generate all rotations of a given string
+import java.util.*;
+public class Practice 
+{
+	static void printRotatedString(String str) 
+    {
+	    for(int i=0;i<str.length();i++)
+	    {
+	    	StringBuffer sb = new StringBuffer();
+	    	int j=i;
+	    	int k=0;
+	    	for(int m=j;m<str.length();m++)
+	    	{
+	    		sb.insert(k, str.charAt(j));
+	    		j++;
+	    		k++;
+	    	}
+	    	j=0;
+	    	while(j<i)
+	    	{
+	    		sb.insert(k, str.charAt(j));
+	    		j++;
+	    		k++;
+	    	}
+	    	System.out.println(sb);
+	    }
+    }
+    public static void main(String[] args)
+    {
+    	String  str = new String("geeks"); 
+        printRotatedString(str);
+    }
+}
+// An efficient solution
+import java.util.*;
+public class Practice 
+{
+	static void printRotatedString(String str) 
+    {
+		int n=str.length();
+		StringBuffer sb = new StringBuffer(str);
+		sb.append(str);
+	    for(int i=0;i<n;i++)
+	    {
+	    	for(int j=0;j!=n;j++)
+	    	{
+	    		System.out.print(sb.charAt(i+j));
+	    	}
+	    	System.out.println();
+	    }
+    }
+    public static void main(String[] args)
+    {
+    	String  str = new String("geeks"); 
+        printRotatedString(str);
+    }
+}
