@@ -1,0 +1,43 @@
+//Reverse Vowels in a given String
+import java.util.*;
+public class Practice 
+{
+	static boolean isvowel(char ch)
+	{
+		return (ch=='a' ||ch=='e' ||ch=='i' ||ch=='o' ||ch=='u');
+	}
+	static String reverseVowel(String str1) 
+	{ 
+		int i=0;
+		int j=str1.length()-1;
+		char[] str = str1.toCharArray();
+		while(i<j)
+		{
+			if (!isvowel(str[i])) 
+	        { 
+	            i++; 
+	            continue; 
+	        } 
+	        if (!isvowel(str[j])) 
+	        { 
+	            j--; 
+	            continue; 
+	        } 
+	  
+	        // swapping 
+	        char t = str[i]; 
+	        str[i]= str[j]; 
+	        str[j]= t; 
+	  
+	        i++; 
+	        j--; 
+		}
+		String result = String.copyValueOf(str);
+		return result;
+	}
+	public static void main(String[] args) 
+	{
+		String str = "hello world"; 
+        System.out.println(reverseVowel(str));
+	}
+}
