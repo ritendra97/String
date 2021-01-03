@@ -1,0 +1,70 @@
+//Check if a string can be obtained by rotating another string 2 places
+//This is O(n2) method
+import java.util.*;
+public class Practice 
+{
+	 static boolean isRotated(String str1, String str2) 
+	 {	 
+		 int n=str1.length();
+			String temp =str1+str1;
+			for(int i=1;i<str1.length();i++)
+			{
+				String substring = temp.substring(i,i+str1.length());
+				if(str2.equals(substring))
+					return true;
+			}
+			return false;
+	 }
+	public static void main(String[] args) 
+	{
+		String str1 = "amazon"; 
+        String str2 = "azonam"; 
+        System.out.println(isRotated(str1, str2) ?  "Yes": "No");
+	}
+}
+//this is efficient solution
+import java.util.*;
+public class Practice 
+{
+	 static boolean isRotated(String str1, String str2) 
+	 {
+		    int n = str1.length();
+			int m = str2.length();
+			if(n!=m)
+				return false;
+			int lps[] = new int[n];
+			int len=0;
+			int i=1;
+			lps[0]=0;
+			while (i < n) {
+	            if (str1.charAt(i) == str2.charAt(len)) {
+	                lps[i] = ++len;
+	                ++i;
+	            }
+	            else {
+	                if (len == 0) {
+	                    lps[i] = 0;
+	                    ++i;
+	                }
+	                else {
+	                    len = lps[len - 1];
+	                }
+	            }
+	        }
+
+	        i = 0;
+
+	        // match from that rotating point
+	        for (int k = lps[n - 1]; k < m; ++k) {
+	            if (str2.charAt(k) != str1.charAt(i++))
+	                return false;
+	        }
+	        return true;
+	 }
+	public static void main(String[] args) 
+	{
+		String str1 = "amazon"; 
+        String str2 = "azonam"; 
+        System.out.println(isRotated(str1, str2) ?  "Yes": "No");
+	}
+}
