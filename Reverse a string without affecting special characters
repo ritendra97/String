@@ -1,0 +1,35 @@
+//Reverse a string without affecting special characters
+import java.util.*;
+public class Practice 
+{
+	public static void reverse(String str) 
+    {
+		int l=0;
+		int r=str.length()-1;
+		char ans[] = str.toCharArray();
+		while(l<r)
+		{
+			if(!Character.isAlphabetic(ans[l]))
+				l++;
+			else if(!Character.isAlphabetic(ans[r]))
+				r--;
+			else
+			{
+				char temp = ans[l];
+				ans[l]=ans[r];
+				ans[r]=temp;
+				l++;
+				r--;
+			}
+		}
+		for(int i=0;i<str.length();i++)
+		{
+			System.out.print(ans[i]+" ");
+		}
+    }
+	public static void main(String[] args) 
+	{
+		String str = "a!!!b.c.d,e'f,ghi";
+		reverse(str);
+	}
+}
