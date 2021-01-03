@@ -1,0 +1,38 @@
+//Reverse individual words
+import java.util.*;
+public class Practice 
+{
+	static void reverseWords(String str) 
+	{
+		int i=0;
+		int start=-1;// here please look into this
+		int end =0;
+		String result="";
+		while(i<str.length())
+		{
+			if(str.charAt(i)==' ')
+			{
+				end=i-1;
+				while(end!=start)
+				{
+					result+=str.charAt(end);
+					end--;
+				}
+				result+=' ';
+				start=i;
+			}
+			i++;
+		}
+		end = i-1;
+		while(end!=start)
+		{
+			result+=str.charAt(end--);
+		}
+		System.out.print(result);
+	}
+	public static void main(String[] args) 
+	{
+		String str = "Geeks for Geeks"; 
+	    reverseWords(str);
+	}
+}
