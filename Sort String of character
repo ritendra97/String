@@ -1,0 +1,45 @@
+//Sort String of character
+import java.util.*;
+public class Practice 
+{
+	static void sortString(String str) 
+	{
+		char[] arr = str.toCharArray();
+		Arrays.sort(arr);
+		for(int i=0;i<arr.length;i++)
+		{
+			System.out.print(arr[i]);
+		}
+	}
+	public static void main(String[] args) 
+	{
+		String s = "geeksforgeeks"; 
+        sortString(s); 
+	}
+}
+// This is efficient
+import java.util.*;
+public class Practice 
+{
+	static int MAX_CHAR=26;
+	static void sortString(String str) 
+	{
+		int input[] = new int[MAX_CHAR];
+		for(int i=0;i<str.length();i++)
+		{
+			input[str.charAt(i)-'a']++;
+		}
+		for(int i=0;i<MAX_CHAR;i++)
+		{
+			for(int j=0;j<input[i];j++)
+			{
+				System.out.print((char)(i+'a'));
+			}
+		}
+	}
+	public static void main(String[] args) 
+	{
+		String s = "geeksforgeeks"; 
+        sortString(s); 
+	}
+}
