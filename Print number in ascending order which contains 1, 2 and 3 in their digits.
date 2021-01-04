@@ -1,0 +1,85 @@
+//Print number in ascending order which contains 1, 2 and 3 in their digits.
+import java.util.Arrays;
+
+public class Practice 
+{
+	public static boolean containsonetwothree(int number)
+	{
+		String str = Integer.toString(number); 
+		return (str.contains("1") && str.contains("2") && str.contains("3"));
+	}
+	private static String printNumbers(int[] numbers) 
+    { 
+		Arrays.sort(numbers);
+		StringBuffer sb = new StringBuffer(); 
+		for(int i=0;i<numbers.length;i++)
+		{
+			if(containsonetwothree(numbers[i]))
+			{
+				sb.append(numbers[i]);
+				sb.append(',');
+			}
+		}
+		return (new String(sb));
+    }
+	public static void main(String[] args) 
+	{
+		int[] numbers = { 32145,123, 1232, 456, 234};         
+        System.out.println(printNumbers(numbers)); 
+	}
+}
+// change in printnumbers method.
+
+import java.io.FileNotFoundException; 
+import java.util.ArrayList; 
+import java.util.Collections; 
+import java.util.Iterator; 
+  
+class GFG { 
+    private static String printNumbers(int[] numbers) 
+    { 
+          
+        ArrayList<Integer> array = new ArrayList<>(); 
+        for (int number : numbers) { 
+              
+            // check if the number contains 1,  
+            // 2 & 3 in any order 
+            if (findContainsOneTwoThree(number)) 
+                array.add(number); 
+        } 
+  
+        // sort all the numbers 
+        Collections.sort(array); 
+          
+        StringBuffer strbuf = new StringBuffer(); 
+        Iterator it = array.iterator();         
+        while (it.hasNext()) { 
+              
+            int value = (int)it.next(); 
+            if (strbuf.length() > 0) 
+                strbuf.append(", "); 
+                  
+            strbuf.append(Integer.toString(value)); 
+        } 
+          
+        return (strbuf.length() > 0) ?  
+                     strbuf.toString() : "-1"; 
+    } 
+  
+    // convert the number to string and find  
+    // if it contains 1, 2 & 3. 
+    private static boolean findContainsOneTwoThree( 
+                                         int number) 
+    { 
+          
+        String str = Integer.toString(number);         
+        return (str.contains("1") && str.contains("2") &&  
+                                    str.contains("3")); 
+    } 
+  
+    public static void main(String[] args)  
+    {         
+        int[] numbers = { 123, 1232, 456, 234, 32145 };         
+        System.out.println(printNumbers(numbers)); 
+    } 
+} 
