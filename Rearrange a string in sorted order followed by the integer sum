@@ -1,0 +1,41 @@
+//Rearrange a string in sorted order followed by the integer sum
+import java.util.*;
+public class Practice 
+{
+	static int MAX_CHAR =26;
+	static String arrangeString(String str) 
+	{
+		int charcount[] = new int[MAX_CHAR];
+		int sum=0;
+		for(int i=0;i<str.length();i++)
+		{
+			if(Character.isUpperCase(str.charAt(i)))
+				charcount[str.charAt(i)-'A']++;
+			else
+				sum+=(int)(str.charAt(i)-'0');
+		}
+		String result ="";
+		int i=0;
+		int k=0;
+		while(k<26)
+		{
+			while(k<MAX_CHAR && charcount[k]==0)
+			{
+				k++;
+			}
+			if(k<MAX_CHAR)
+			{
+				result+=(char)('A'+k);
+				charcount[k]--;
+			}
+		}
+		if(sum>0)
+			result+=sum;
+		return result;
+	}
+	public static void main(String[] args) 
+	{
+		String str = "ACCBA10D2EW30"; 
+        System.out.println(arrangeString(str));
+	}
+}
