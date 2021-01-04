@@ -1,0 +1,54 @@
+//Alternate Lower Upper String Sort
+import java.util.*;
+public class Practice 
+{
+	static int MAX_CHAR=26;
+	public static String alternateSort(String s1)
+	{
+		int n=s1.length();
+		char s[] = new char[n];
+		int lcount[] = new int[MAX_CHAR];
+		int ucount[] = new int[MAX_CHAR];
+		for(int i=0;i<s1.length();i++)
+		{
+			if(Character.isUpperCase(s1.charAt(i)))
+			{
+				ucount[s1.charAt(i)-'A']++;
+			}
+			else
+			{
+				lcount[s1.charAt(i)-'a']++;
+			}
+		}
+		int k=0;
+		int i=0;
+		int j=0;
+		while(k<n)
+		{
+			while(j<MAX_CHAR && ucount[j]==0)
+			{
+				j++;
+			}
+			if(j<MAX_CHAR)
+			{
+				s[k++]=(char)('A'+j);
+				ucount[j]--;
+			}
+			while(i<MAX_CHAR && lcount[i]==0)
+			{
+				i++;
+			}
+			if(i<MAX_CHAR)
+			{
+				s[k++]=(char)('a'+i);
+				lcount[i]--;
+			}
+		}
+		return (new String(s));
+    }
+	public static void main(String[] args) 
+	{
+		String str = "bAwutndekWEdkd";
+	    System.out.println(alternateSort(str));
+	}
+}
