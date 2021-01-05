@@ -1,0 +1,32 @@
+//Camel case of a given sentence.
+import java.util.*;
+public class Practice 
+{
+	static String convert(String s) 
+    { 
+		String result="";
+		result+= s.charAt(0);
+		int i=1;
+		while(i<s.length())
+		{
+			char ch = s.charAt(i);
+			if(ch==' ')
+			{
+				i++;
+				result+=Character.toUpperCase(s.charAt(i));
+				i++;
+			}
+			else
+			{
+				result+=s.charAt(i);
+			}
+			i++;
+		}
+		return result;
+    }
+	public static void main(String[] args) 
+	{
+		String str = "I get intern at geeksforgeeks"; 
+	    System.out.println(convert(str));
+	}
+}
