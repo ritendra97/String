@@ -1,0 +1,37 @@
+//Convert to a string that is repetition of a substring of k length
+import java.util.*;
+public class Practice 
+{
+	static boolean checkString(String str, int k)  
+    {
+		int n=str.length();
+		HashMap<String,Integer> mp = new HashMap<String,Integer>();
+		if(n%k!=0)
+		{
+			return false;
+		}
+			try 
+			{
+				for(int i=0;i<n;i+=k)
+				{
+					mp.put(str.substring(i, k),mp.get(str.substring(i, k))==null ? 1:mp.get(str.substring(i, k))+1);
+				}
+			}
+			catch(Exception e){ }
+			if(mp.size()==1)
+				return true;
+			if(mp.size()!=2)
+				return false;
+			HashMap.Entry<String, Integer> ans = mp.entrySet().iterator().next();
+			if(ans.getValue()==n/k-1 || ans.getValue()==1)
+				return true;
+			return false;
+    }
+	public static void main(String[] args) 
+	{
+		if (checkString("abababcd", 2)) 
+            System.out.println("Yes"); 
+        else
+            System.out.println("No"); 
+	}
+}
