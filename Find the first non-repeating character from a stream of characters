@@ -1,0 +1,36 @@
+//Find the first non-repeating character from a stream of characters
+import java.util.*;
+public class Practice 
+{
+	final static int MAX_CHAR = 256; 
+	  
+    static void findFirstNonRepeating(String str) 
+    { 
+    	List<Character> inDll = new ArrayList<Character>();
+    	boolean repeated[] = new boolean[MAX_CHAR];
+    	for(int i=0;i<str.length();i++)
+    	{
+    		char x = str.charAt(i);
+    		if(!repeated[x])
+    		{
+    			if(!(inDll.contains(x)))
+    				inDll.add(x);
+    	    	else
+    		    {
+    			    inDll.remove((Character)x);
+    		    	repeated[x]=true;
+    		    }
+    	    }
+    	}
+    	if (inDll.size() != 0) { 
+            System.out.print( 
+                "First non-repeating character so far is "); 
+            System.out.println(inDll.get(0)); 
+        }
+    }
+	public static void main(String[] args) 
+	{
+		String stream = "geeksforgeeksandgeeksquizfor";
+		findFirstNonRepeating(stream); 
+	}
+}
