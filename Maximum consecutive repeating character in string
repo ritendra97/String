@@ -1,0 +1,30 @@
+//Maximum consecutive repeating character in string
+import java.util.*;
+public class Practice 
+{
+	static int MAX_CHAR=26;
+	static char maxRepeating(String str) 
+    { 
+		int max=0;
+		int index=0;
+		int count[] = new int[MAX_CHAR];
+		for(int i=0;i<str.length();i++)
+		{
+			count[str.charAt(i)-'a']++;
+		}
+		for(int i= 0;i<MAX_CHAR;i++)
+		{
+			if(count[i]>max)
+			{
+				max=count[i];
+				index=i;
+			}
+		}
+		return (str.charAt(index));
+    }
+	public static void main(String[] args) 
+	{
+		String str = "aaaabbaaccde"; 
+        System.out.println(maxRepeating(str));
+	}
+}
