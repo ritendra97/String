@@ -1,0 +1,29 @@
+//Distributing all balls without repetition
+import java.util.*;
+public class Practice 
+{
+	static int MAX_CHAR=26;
+	static boolean distributingBalls(long k, long n, String str) 
+    { 
+		int count[] = new int[MAX_CHAR];
+		for(int i=0;i<str.length();i++)
+		{
+			count[str.charAt(i)-'a']++;
+		}
+		for(int i= 0;i<MAX_CHAR;i++)
+		{
+			if(count[i]>k)
+				return false;
+		}
+		return true;
+    }
+	public static void main(String[] args) 
+	{
+		 long n = 6, k = 3; 
+	     String str = "aacaab";  
+	     if (distributingBalls(k, n, str)) 
+	         System.out.println("YES"); 
+	     else
+	         System.out.println("NO");
+	}
+}
