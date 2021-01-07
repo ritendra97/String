@@ -1,0 +1,30 @@
+//78.	Return maximum occurring character in an input string.
+import java.util.*;
+public class Practice 
+{
+	static int MAX_CHAR=256;
+	static char getMaxOccuringChar(String str) 
+    {
+		char ans[] = new char[MAX_CHAR];
+		int max=Integer.MIN_VALUE;
+		char ch='\0';
+		for(int i=0;i<str.length();i++)
+		{
+			ans[str.charAt(i)]++;
+		}
+		for(int i=0;i<str.length();i++)
+		{
+			if(ans[str.charAt(i)]>max)
+			{
+				max=ans[str.charAt(i)];
+				ch=(char)str.charAt(i);
+			}
+		}
+		return ch;
+    }
+	public static void main(String[] args) 
+	{
+		String str = "sample string"; 
+        System.out.println("Max occurring character is " + getMaxOccuringChar(str)); 
+	}
+}
