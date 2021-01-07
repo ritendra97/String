@@ -1,0 +1,25 @@
+//Find repeated character present first in a string
+import java.util.*;
+public class Practice 
+{
+	static int MAX_CHAR=256;
+	static void findRepeatFirstN2(String s) 
+    {
+		int[] val=new int[26];
+        for(int i=0;i<s.length();i++)
+        {
+        	val[s.charAt(i)-'a']++;
+        }
+        for(int i=0;i<s.length();i++){
+            if(val[s.charAt(i)-'a']>1){
+              System.out.print(s.charAt(i));
+              break;
+            }
+        }
+    }
+	public static void main(String[] args) 
+	{
+		String str = "geeksforgeeks";
+		findRepeatFirstN2(str);
+	}
+}
