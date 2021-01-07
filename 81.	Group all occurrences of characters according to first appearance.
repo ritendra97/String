@@ -1,0 +1,27 @@
+//Group all occurrences of characters according to first appearance.
+import java.util.*;
+public class Practice 
+{
+	static void printGrouped(String s) 
+    {
+		int[] val=new int[26];
+        for(int i=0;i<s.length();i++)
+        {
+        	val[s.charAt(i)-'a']++;
+        }
+        for(int i=0;i<s.length();i++)
+        {
+        	while(val[s.charAt(i)-'a']!=0)
+        	{
+        		System.out.print(s.charAt(i));
+        		val[s.charAt(i)-'a']--;
+        	}
+        	val[s.charAt(i)-'a']=0;
+        }
+    }
+	public static void main(String[] args) 
+	{
+        String str = new String("geeksforgeeks"); 
+        printGrouped(str);
+	}
+}
