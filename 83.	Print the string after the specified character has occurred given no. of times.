@@ -1,0 +1,29 @@
+//83.	Print the string after the specified character has occurred given no. of times.
+import java.util.*;
+public class Practice 
+{
+	static void printString(String str, char ch, int count) 
+    {
+		int i=0;
+		for(;i<str.length();i++)
+		{
+			if(str.charAt(i)==ch)
+			{
+				count--;
+			}
+			else if(count==0)
+			{
+				while(i<str.length())
+				{
+					System.out.print(str.charAt(i));
+					i++;
+				}
+			}
+		}
+    }
+	public static void main(String[] args) 
+	{	
+		String str = "This is demo string";
+        printString(str, 'i', 3);
+	}
+}
