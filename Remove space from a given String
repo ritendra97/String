@@ -1,0 +1,23 @@
+//Remove space from a given String
+import java.util.*;
+public class Practice 
+{
+	static String result="";
+	static String removeSpaces(String str) 
+	{
+		for(int i=0;i<str.length();i++)
+		{
+			if(str.charAt(i)==' ')
+			{
+				continue;
+			}
+			result+=str.charAt(i);
+		}
+		return result;
+	}
+	public static void main(String[] args) 
+	{
+		String str="g eeks for ge eeks ";
+		System.out.print(removeSpaces(str));
+	}
+}
