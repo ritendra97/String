@@ -1,0 +1,37 @@
+//Find the most frequent digit without using array/string
+import java.util.*;
+public class Practice 
+{
+	static int countOccurrences(int x,int d)
+	{
+		int count=0;
+		while(x>0)
+		{
+			if(x%10==d)
+				count++;
+			x=x/10;
+		}
+		return count;
+	}
+	static int maxOccurring( int x) 
+	{
+		int max_count=1;
+		int count=0;
+		int result=0;
+		for(int i=0;i<=9;i++)
+		{
+			count = countOccurrences(x,i);
+			if(count>=max_count)
+			{
+				max_count=count;
+				result=i;
+			}
+		}
+		return result;
+	}
+	public static void main(String[] args)
+	{
+		 int x = 1223355; 
+		 System.out.println("Max occurring digit is "+maxOccurring(x));
+	}
+}
