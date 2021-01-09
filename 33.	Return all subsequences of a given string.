@@ -32,3 +32,27 @@ public class Practice
 		}
 	}
 }
+// easy Approach
+import java.util.*;
+public class Practice 
+{
+	public static void findsubsequences(String str,String result)
+	{
+		if(str.length()==0)
+		{
+			System.out.print(result);
+			return;
+		}
+		findsubsequences(str.substring(1),result);
+		findsubsequences(str.substring(1),str.charAt(0)+result);
+	}
+	public static void findsubsequences(String str)
+	{
+		findsubsequences(str," ");
+	}
+	public static void main(String[] args) 
+	{
+		String str = "xyz";
+		findsubsequences(str);
+	}
+}
