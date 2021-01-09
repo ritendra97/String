@@ -1,0 +1,34 @@
+//Return all subsequences of a given string.
+import java.util.*;
+public class Practice 
+{
+	public static String[] findsubsequences(String str)
+	{
+		if(str.length()==0)
+		{
+			String ans[]={" "};
+			return ans;
+		}
+		String smallest[] = findsubsequences(str.substring(1));
+		int k=0;
+		String ans[]=new String[2*smallest.length];
+		for(int i=0;i<smallest.length;i++)
+		{
+			ans[k++]=smallest[i];
+		}
+		for(int i=0;i<smallest.length;i++)
+		{
+			ans[k++]=str.charAt(0)+smallest[i];
+		}
+		return ans;
+	}
+	public static void main(String[] args) 
+	{
+		String str = "xyz";
+		String ans[] = findsubsequences(str);
+		for(int i=0;i<ans.length;i++)
+		{
+			System.out.println(ans[i]);
+		}
+	}
+}
