@@ -1,0 +1,137 @@
+//Given a sequence of words, print all anagrams together
+//This below code is not giving exact answer but you will get lot of thing through it
+import java.util.*;
+public class Practice 
+{
+	static int MAX_CHAR=26;
+	static void printAnagramsTogether(String wordArr[],int size)
+    {	 
+		int i,k,j,l,m;
+		int count1[] = new int[MAX_CHAR];
+		int count2[] = new int[MAX_CHAR];
+		boolean ans = true;
+		for(i=0;i<size;i++)
+		{
+			String temp1 = "";
+			temp1=wordArr[i];
+			for(k=0;k<temp1.length();k++)
+			{
+				count1[temp1.charAt(k)-'a']++;
+			}
+			for(j=i;j<size;j++)
+			{
+				String temp2 = "";
+				temp2 = wordArr[j];
+				for(l=0;l<temp2.length();l++)
+				{
+					count2[temp2.charAt(l)-'a']++;
+				}
+				for(m=0;m<MAX_CHAR;m++)
+				{
+					if(count1[m]!=count2[m])
+						ans=false;
+				}
+				if(ans==true)
+					System.out.print(wordArr[j]+" ");
+				ans=true;
+				Arrays.fill(count2, 0);
+			}
+			System.out.println();
+			Arrays.fill(count1, 0);
+		}
+    }
+	public static void main(String[] args) 
+	{
+		String wordArr[] = {"cat", "dog", "tac", "god","act", "gdo"}; 
+		int size = wordArr.length; 
+        printAnagramsTogether(wordArr, size);
+	}
+}
+// Below code is efficient but not the best
+import java.util.*;
+public class Practice 
+{
+	static void printAnagramsTogether(String wordArr[],int size)
+    {	 
+		HashMap<String,Vector<String>> map = new HashMap<>();
+		for(String s:wordArr)
+		{
+			char arr[] = s.toCharArray();
+			Arrays.sort(arr);
+			String s1 = new String(arr);
+			if(!map.containsKey(s1))
+			{
+				map.put(s1,new Vector<String>());
+			}
+			map.get(s1).add(s);
+		}
+		for(String s2:map.keySet())
+		{
+			Vector<String> v = map.get(s2);
+			if(v.size()>1)
+			{
+				System.out.print(v);
+			}
+		}
+    }
+	public static void main(String[] args) 
+	{
+		String wordArr[] = {"cat", "dog", "tac", "god","act", "gdo"}; 
+		int size = wordArr.length; 
+        printAnagramsTogether(wordArr, size);
+	}
+}
+import java.util.ArrayList;
+import java.util.HashMap;
+ 
+public class FindAnagrams {
+ 
+    private static ArrayList<ArrayList<String> >
+    solver(
+        ArrayList<String> list)
+    {
+ 
+        HashMap<HashMap<Character, Integer>,
+                ArrayList<String> >
+            map = new HashMap<HashMap<Character, Integer>,
+                              ArrayList<String> >();
+        for (String str : list) {
+            HashMap<Character, Integer>
+                tempMap = new HashMap<Character, Integer>();
+            for (int i = 0; i < str.length(); i++) {
+                if (tempMap.containsKey(str.charAt(i))) {
+                    int x = tempMap.get(str.charAt(i));
+                    tempMap.put(str.charAt(i), ++x);
+                }
+                else {
+                    tempMap.put(str.charAt(i), 1);
+                }
+            }
+            if (map.containsKey(tempMap))
+                map.get(tempMap).add(str);
+            else {
+                ArrayList<String>
+                    tempList = new ArrayList<String>();
+                tempList.add(str);
+                map.put(tempMap, tempList);
+            }
+        }
+        ArrayList<ArrayList<String> >
+            result = new ArrayList<>();
+        for (HashMap<Character, Integer>
+                 temp : map.keySet())
+            result.add(map.get(temp));
+        return result;
+    }
+    public static void main(String[] args)
+    {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("cat");
+        list.add("dog");
+        list.add("ogd");
+        list.add("god");
+        list.add("atc");
+ 
+        System.out.println(solver(list));
+    }
+}
