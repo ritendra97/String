@@ -1,0 +1,42 @@
+//Anagram Substring Search (Or Search for all permutations)
+import java.util.*;
+public class Practice 
+{
+	static int MAX_CHAR = 256;
+	static boolean compare(char arr1[], char arr2[]) 
+    {
+		for(int i=0;i<MAX_CHAR;i++)
+		{
+			if(arr1[i]!=arr2[i])
+				return false;
+		}
+		return true;
+    }
+	static void search(String pat, String txt) 
+    {
+		int n = pat.length();
+		int m = txt.length();
+		char countP[] = new char[MAX_CHAR];
+		char countTW[] = new char[MAX_CHAR];
+		for(int i=0;i<n;i++)
+		{
+			countP[pat.charAt(i)-'A']++;
+			countTW[txt.charAt(i)-'A']++; 
+		}
+		for(int j=n;j<m;j++)
+		{  
+		     if (compare(countP, countTW)) 
+	             System.out.println("Found at Index " +(j-n));
+			 countTW[txt.charAt(j)]++;
+			 countTW[txt.charAt(j-n)]--;
+		}
+		if (compare(countP, countTW)) 
+            System.out.println("Found at Index " +(m-n));
+    }
+	public static void main(String[] args) 
+	{
+		String txt = "BACDGABCDA"; 
+        String pat = "ABCD"; 
+        search(pat, txt); 
+	}
+}
