@@ -1,0 +1,37 @@
+//1’s and 2’s complement of a Binary Number
+import java.util.*;
+public class Practice 
+{
+	static char flip(char ch) 
+    {
+		return (ch=='0'?'1':'0');
+    }
+	static void printOneAndTwosComplement(String bin) 
+	{
+		for(int i=0;i<bin.length();i++)
+		{
+			System.out.print(flip(bin.charAt(i)));
+		}
+		int i;
+		for(i=bin.length()-1;i>=0;i--)
+		{
+			if(bin.charAt(i)=='1')
+				break;
+		}
+		
+		String s="";
+		if(i==-1)
+			System.out.print('1'+bin);
+		for(int k=i-1;k>=0;k--)
+		{
+			s=s+flip(bin.charAt(k)); 
+		}
+		System.out.println();
+		System.out.println(s+bin.substring(i,bin.length()));
+	}
+	public static void main(String[] args) 
+	{
+		String bin = "1100"; 
+        printOneAndTwosComplement(bin);
+	}
+}
