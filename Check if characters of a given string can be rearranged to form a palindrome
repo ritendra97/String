@@ -1,0 +1,68 @@
+//Check if characters of a given string can be rearranged to form a palindrome
+import java.util.*;
+public class Practice 
+{
+	static int NO_OF_CHARS = 256; 
+    static boolean canFormPalindrome(String str) 
+    { 
+    	int odd=0;
+    	int count[] = new int[NO_OF_CHARS];
+    	for(int i=0;i<str.length();i++)
+    	{
+    		count[str.charAt(i)-'a']++;
+    	}
+    	for(int j=0;j<NO_OF_CHARS;j++)
+    	{
+    		if(count[j]%2!=0)
+    			odd++;
+    		if(odd>1)
+    			return false;
+    	}
+    	return true;
+    }
+	public static void main(String[] args) 
+	{
+		if (canFormPalindrome("geeksforgeeks")) 
+		    System.out.println("Yes"); 
+		else
+		    System.out.println("No"); 
+		  
+		if (canFormPalindrome("geeksogeeks")) 
+		    System.out.println("Yes"); 
+		else
+		    System.out.println("No");
+	}
+}
+// This is also one more solution.
+import java.util.*;
+public class Practice 
+{
+	static int NO_OF_CHARS = 256; 
+    static boolean canFormPalindrome(String str) 
+    { 
+    	ArrayList<Character> ans= new ArrayList<Character>();
+    	int len = str.length();
+    	for(int i=0;i<str.length();i++)
+    	{
+    		if(ans.contains(str.charAt(i)))
+    			ans.remove(str.charAt(i));
+    		else
+    			ans.add(str.charAt(i));
+    	}
+    	if(len%2==0 && ans.isEmpty() || len%2!=0 && ans.size()==1)
+    		return true;
+    	return false;
+    }
+	public static void main(String[] args) 
+	{
+		if (canFormPalindrome("geeksforgeeks")) 
+		    System.out.println("Yes"); 
+		else
+		    System.out.println("No"); 
+		  
+		if (canFormPalindrome("geeksogeeks")) 
+		    System.out.println("Yes"); 
+		else
+		    System.out.println("No");
+	}
+}
