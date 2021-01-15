@@ -1,0 +1,47 @@
+//Generate all binary strings without consecutive 0's
+Here in this solution the space complexity is O(1);
+
+public class Practice 
+{
+	static int consecutive(int n)
+	{
+		int a[]= new int[n+1];
+		int b[]= new int[n+1];
+		a[0]=1;
+		b[0]=1;
+		for(int i=1;i<n;i++)
+		{
+			a[i]=b[i-1];
+			b[i]=a[i-1]+b[i-1];
+		}
+		return a[n-1]+b[n-1];
+	}
+	public static void main(String[] args) 
+	{
+		System.out.print(consecutive(2));
+	}
+}
+//Here the space complexity is not O(n) means it is O(1)
+
+public class Practice 
+{
+	static int consecutive(int n)
+	{
+	    int countzeros=1;
+	    int countones =1;
+	    int newcountzeros=0;
+	    int newcountones=0;
+		for(int i=1;i<n;i++)
+		{
+			newcountzeros = countones;
+			newcountones = countzeros+countones;
+			countzeros=newcountzeros;
+			countones=newcountones;
+		}
+		return newcountzeros+newcountones;
+	}
+	public static void main(String[] args) 
+	{
+		System.out.print(consecutive(2));
+	}
+}
