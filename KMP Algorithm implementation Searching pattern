@@ -1,0 +1,61 @@
+//KMP Algorithm implementation Searching pattern
+import java.util.*;
+public class Practice 
+{
+	public static void search(String txt,String pat)
+	{
+		int pattern[] = new int[pat.length()];
+		int i=0;
+		int j=1;
+		pattern[i]=0;
+		while(i<pattern.length && j<pattern.length)
+		{
+			if(pat.charAt(i)==pat.charAt(j))
+			{
+				pattern[j]=i+1;
+				i++;
+				j++;
+			}
+			else if(pat.charAt(i)!=pat.charAt(j))
+			{
+				if(i!=0)
+		     	    i=pattern[i-1];
+				else
+				{
+					pattern[j]=0;
+					j++;
+				}	
+			}
+		}
+		int k=0;//text search
+		int l=0;//pat search
+		int N=txt.length();
+		int M=pat.length();
+		while(k<N)
+		{
+			if(txt.charAt(k)==pat.charAt(l))
+			{
+				k++;
+				l++;
+			}
+			if(l==M)
+			{
+				System.out.println(k-l+" ");
+				l=pattern[l-1];
+			}
+			else if(k<N && txt.charAt(k)!=pat.charAt(l))
+			{
+				if(l!=0)
+				    l=pattern[l-1];
+				else
+					k=k+1;
+			}
+		}
+	}
+	public static void main(String[] args) 
+	{
+		String txt = "AABAACAADAABAAABAA"; 
+        String pat = "AABA"; 
+        search(txt,pat);
+	}
+}
