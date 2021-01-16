@@ -1,0 +1,37 @@
+//Add n binary strings
+import java.util.*;
+public class Practice 
+{
+	public static String addBinaryStringUtil(String a, String b)
+	{
+		String result = "";
+		int i = a.length()-1;
+		int j = b.length()-1;
+		int s=0;
+		while(i>=0 || j>=0 || s==1)
+		{
+			s+=((i>=0)?a.charAt(i)-'0':0);
+			s+=((j>=0)?b.charAt(j)-'0':0);
+			result=s%2+result;
+			s=s/2;
+			i--;
+			j--;
+		}
+		return result;
+	}
+	public static String addBinaryString(String arr[],int n)
+	{
+		String result="";
+		for(int i=0;i<arr.length;i++)
+		{
+			result=addBinaryStringUtil(result,arr[i]);
+		}
+		return result;
+	}
+	public static void main(String[] args) 
+	{
+		String arr[] = {"1", "10", "11"}; 
+        int n = arr.length; 
+        System.out.println(addBinaryString(arr, n));
+	}
+}
