@@ -1,0 +1,29 @@
+//Count of occurrences of a “1(0+)1” pattern in a string
+import java.util.*;
+public class Practice 
+{
+	static int countPattern(String str) 
+    {
+		int len = str.length();
+		int count=0;
+		boolean onesee=false;
+		for(int i=0;i<len;i++)
+		{
+			if(str.charAt(i)=='1' && onesee==true)
+			{
+				if(str.charAt(i-1)=='0')
+					count++;
+			}
+			if(str.charAt(i)=='1' && onesee==false)
+				onesee=true;
+			if(str.charAt(i)!='1' && str.charAt(i)!='0')
+				onesee=false;
+		}
+		return count;
+    }
+	public static void main(String[] args) 
+	{
+		String str = "100001abc101"; 
+        System.out.println(countPattern(str));
+	}
+}
