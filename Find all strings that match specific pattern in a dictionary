@@ -1,0 +1,33 @@
+/Find all strings that match specific pattern in a dictionary
+import java.util.*;
+public class Practice 
+{
+	static String encodeString(String str)
+    {
+		String pat = "";
+		HashMap<Character,Integer> map = new HashMap<>();
+		for(int i=0;i<str.length();i++)
+		{
+			if(!map.containsKey(str.charAt(i)))
+				map.put(str.charAt(i), i);
+			pat+=map.get(str.charAt(i));
+		}
+		return pat;
+    }
+	static void findMatchedWords(String[] dict, String pattern)
+	{
+		String compare=encodeString(pattern);
+		int len = pattern.length();
+		for(String word : dict)
+		{
+			if(word.length()==len && compare.equals(encodeString(word)))
+				System.out.println(word);
+		}
+	}
+	public static void main(String[] args) 
+	{
+		String[] dict = { "abb", "abc","xyz", "xyy" };
+        String pattern = "foo";
+        findMatchedWords(dict, pattern);
+	}
+}
