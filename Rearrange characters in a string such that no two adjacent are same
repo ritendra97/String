@@ -1,0 +1,54 @@
+//Rearrange characters in a string such that no two adjacent are same
+//Rearrange characters in a string such that no two adjacent are same
+import java.util.*;
+class key
+{
+	int freq;
+	char c;
+	key(int freq,char c)
+	{
+		this.freq=freq;
+		this.c=c;
+	}
+}
+public class StringProblem 
+{
+	static PriorityQueue<key> maxheap = new PriorityQueue<key>(new Comparator<key>() {
+		public int compare(key k1,key k2)
+		{
+			return k2.freq-k1.freq;
+		}
+	});
+	static int MAX_CHAR = 26; 
+	public static String rearrangeString(String str)
+	{
+		 int n = str.length(); 
+		int[] count = new int[MAX_CHAR]; 
+        
+        for (int i = 0; i < n; i++) 
+             count[str.charAt(i) - 'a']++;
+        
+        for (char c = 'a'; c <= 'z'; c++) { 
+            int val = c - 'a'; 
+            if (count[val] > 0) 
+                maxheap.add(new key(count[val], c)); 
+       }
+		String result="";
+		key prev = new key(-1,'#');
+		while(!maxheap.isEmpty())
+		{
+			key temp = maxheap.poll();
+			result+=temp.c;
+			if(prev.freq>0)
+				maxheap.add(prev);
+			(temp.freq)--;
+			prev=temp;
+		}
+		return result;
+	}
+	public static void main(String[] args) 
+	{
+		String str ="bbbaa";
+		System.out.println(rearrangeString(str));
+	}
+}
