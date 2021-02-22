@@ -1,0 +1,20 @@
+//Remove all duplicates from a given string 
+
+class Solution {
+    String removeDuplicates(String str) 
+    {
+        String s = "";
+        for(int i=0;i<str.length();i++)
+        {
+            char ch = str.charAt(i);
+           // if c is present in str, it returns 
+            // the index of c, else it returns -1 
+            if(s.indexOf(ch)<0)
+            {
+                s+=ch;
+            }
+        }
+        return s;
+    } 
+    
+}
