@@ -1,0 +1,49 @@
+//Next Greater Number
+public class Practice 
+{
+	 static void swap(char ar[], int i, int j)  
+	    { 
+	        char temp = ar[i]; 
+	        ar[i] = ar[j]; 
+	        ar[j] = temp; 
+	    } 
+	    
+	    public static  void getNextEven(String x)
+	    {
+	    	int i;
+	        char arr[] = x.toCharArray();
+	        int len = x.length();
+	        for(i=len-1;i>0;i--)
+	        {
+	            if(arr[i]>arr[i-1])
+	                break;
+	        }
+	        if(i==0)
+	        {
+	            System.out.print("No");
+	        }
+	        else
+	        {
+	            int a=arr[i-1];
+	            int min = i;
+	            for(int j=i+1;j<len;j++)
+	            {
+	                if(arr[j]>a && arr[j]<arr[min])
+	                {
+	                    min=j;
+	                }
+	            }
+	            swap(arr,i-1,min);
+	        }
+	        Arrays.sort(arr,i,len);
+	        for(char c: arr)
+	        {
+	        	System.out.print(c+" ");
+	        }
+	    }
+	public static void main(String[] args) 
+	{
+		String X = "34722641";
+		getNextEven(X);
+    }
+}
