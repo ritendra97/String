@@ -1,0 +1,62 @@
+//Valid IP
+// Longest subsequence where every character appears at-least k times
+import java.util.*;
+// this below code fail in one condition 00000.00000.00000.00000
+public class Practice 
+{
+	 public static  boolean isValid(String s) 
+	    {
+	        if(s==null || "".equals(s.trim()))
+	          return false;
+	        String parts[] = s.split("\\.");
+	        if(parts.length!=4)
+	           return false;
+	        for(String a:parts)
+	        {
+	            try
+	            {
+	                int intval = Integer.parseInt(a);
+	                if(intval<0 || intval>255)
+	                   return false;
+	            }
+	            catch(NumberFormatException nfe)
+	            {
+	                return false;
+	            }
+	            
+	        }
+	        return true;
+	    }
+	public static void main(String[] args) 
+	{
+
+		String s = "0000.0000.0000.0000";
+		
+		System.out.println(isValid(s));
+    }
+}
+// Below code will work for all
+// Longest subsequence where every character appears at-least k times
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class Practice 
+{
+	public static  boolean isValid(String s) 
+	{
+		String zeroto235 ="(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])";
+		Pattern p = Pattern.compile(zeroto235);
+		if(s==null)
+			return false;
+		Matcher m = p.matcher(s);
+		
+		return m.matches();
+	}
+	public static void main(String[] args) 
+	{
+
+		String s = "222.111.111.111";
+		
+		System.out.println(isValid(s));
+    }
+}
