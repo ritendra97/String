@@ -16,7 +16,7 @@ public class StringProblem
 			int count=0;
 			for(int m=0;m<p.length();m++)
 			{
-				map.put(p.charAt(m), map.getOrDefault(p.charAt(m)+1, 1));
+				map.put(p.charAt(m), map.getOrDefault(p.charAt(m), 0)+1);
 			}
 			for(j=i;j<s.length();j++)
 			{
