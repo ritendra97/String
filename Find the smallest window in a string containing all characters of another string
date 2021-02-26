@@ -1,4 +1,61 @@
 //Find the smallest window in a string containing all characters of another string
+// this is bruteforce method below code has been optimized
+import java.util.*;
+public class StringProblem 
+{
+	static int max=Integer.MAX_VALUE;
+	static int len=0;
+	static int a=0;
+	static int b=0;
+	static int j;
+	public static String smallestWindow(String s, String p)
+    {
+		HashMap<Character,Integer> map = new HashMap<>();
+		for(int i=0;i<s.length();i++)
+		{
+			int count=0;
+			for(int m=0;m<p.length();m++)
+			{
+				map.put(p.charAt(m), map.getOrDefault(p.charAt(m)+1, 1));
+			}
+			for(j=i;j<s.length();j++)
+			{
+				if(map.containsKey(s.charAt(j)))
+				{
+					count++;
+					if(map.get(s.charAt(j))==1)
+					{
+						map.remove(s.charAt(j));
+					}
+					else
+					{
+						map.put(s.charAt(j),map.get(s.charAt(j))-1 );
+					}
+					if(count==p.length())
+					{
+						len = j-i;
+						break;
+					}
+				}
+				
+			}
+			if(max>len)
+			{
+				max=len;
+				a=i;
+				b=j;
+			}
+		}
+		return s.substring(a,b+1);
+    }
+	public static void main(String[] args) 
+	{
+		String S = "geeksforgeeks";
+        String P = "ork";
+        System.out.println(smallestWindow(S,P));
+	}
+}
+// this below code is optimized code
 import java.util.*;
 public class Practice 
 {
