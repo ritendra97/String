@@ -1,4 +1,66 @@
 //Anagram Substring Search (Or Search for all permutations)
+// thid code is efficient and good
+import java.util.*;
+public class StringProblem 
+{
+	static boolean compare(HashMap<Character,Integer> pat,HashMap<Character,Integer> search)
+	{
+		for(char c:search.keySet())
+		{
+			if(pat.get(c)!=search.get(c))
+				return false;
+		}
+		return true;
+	}
+	static int search(String pattern, String txt) 
+    { 
+		int count=0;
+		HashMap<Character,Integer> pat = new HashMap<>();
+		HashMap<Character,Integer> search = new HashMap<>();
+		for(int i=0;i<pattern.length();i++)
+		{
+			char ch = pattern.charAt(i);
+			pat.put(ch, pat.getOrDefault(ch,0)+1);
+		}
+		for(int i=0;i<pattern.length();i++)
+		{
+			char ch = txt.charAt(i);
+			search.put(ch, search.getOrDefault(ch,0)+1);
+		}
+		int n=pattern.length();
+		while(n<txt.length())
+		{
+			if(compare(pat,search)==true)
+				count++;
+			
+			char intwindowchar = txt.charAt(n);
+			search.put(intwindowchar, search.getOrDefault(intwindowchar, 0)+1);
+			
+			int m = n-pattern.length();
+			char outwindowchar = txt.charAt(m);
+			if(search.get(outwindowchar)==1)
+			{
+				search.remove(outwindowchar);
+			}
+			else
+			{
+				search.put(outwindowchar, search.get(outwindowchar)-1);
+			}
+			n++;
+		}
+		if(compare(pat,search)==true)
+			count++;
+		return count;
+    }
+	public static void main(String[] args) 
+	{
+
+        String txt = "AAABABAA"; 
+        String pat = "AABA"; 
+        System.out.println(search(pat, txt));
+	}
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import java.util.*;
 public class Practice 
 {
