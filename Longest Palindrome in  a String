@@ -1,0 +1,49 @@
+import java.util.*;
+public class StringProblem 
+{
+	static boolean isPalindrome(String s)
+    {
+		int j = s.length()-1;
+        int i = 0;
+        while(i<=j)
+        {
+            if(s.charAt(i)!=s.charAt(j))
+            {
+                return false;
+            }
+            else
+            {
+                i++;
+                j--;
+            }
+        }
+        return true;
+    }
+    static String longestPalin(String S)
+    {
+    	int max_len =0;
+    	int first=0;
+        for(int i=0;i<S.length();i++)
+        {
+        	for(int j=S.length()-1;j>=i;j--)
+        	{
+        		String t = S.substring(i,j+1);
+        		if(isPalindrome(t))
+        		{
+        			int len = j-i+1;
+        			if(max_len<len)
+        			{
+        				first =i;
+        				max_len=len;
+        			}
+        		}
+        	}
+        }
+        return S.substring(first,first+max_len);
+    }
+	public static void main(String[] args) 
+	{
+		String S = "forgeeksskeegfor";
+		System.out.println(longestPalin(S));
+	}
+}
