@@ -1,0 +1,28 @@
+//
+import java.util.*;
+public class StringProblem 
+{
+	static int countOfSubstrings(String S, int K) 
+    {
+		int count=0;
+		
+		for(int i=0;i<=S.length()-K;i++)
+		{
+			String t = S.substring(i,i+K);
+			HashMap<Character,Integer> map = new HashMap<>();
+			for(int j=0;j<t.length();j++)
+			{
+				char ch = t.charAt(j);
+				map.put(ch, map.getOrDefault(ch, 0)+1);
+			}
+			if(map.size()==K-1)
+				count++;
+		}
+		return count;
+    }
+	public static void main(String[] args) {
+		String S = "cdncnhy";
+		System.out.println(countOfSubstrings(S,5));
+	}
+
+}
