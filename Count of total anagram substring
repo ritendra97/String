@@ -1,0 +1,39 @@
+//Count of total anagram substring
+import java.util.*;
+public class StringProblem 
+{
+	static int subString(String s)
+	{
+		int total_count=0;
+		HashMap<String, Integer> map = new HashMap<>();
+		for(int i=0;i<s.length();i++)
+		{
+			for(int j=i;j<s.length();j++)
+			{
+				char[] temp = s.substring(i,j+1).toCharArray();
+				Arrays.sort(temp);
+				String paste = new String(temp);
+				if(map.containsKey(paste))
+				{
+					map.put(paste, map.get(paste)+1);
+				}
+				else
+				{
+					map.put(paste,1);
+				}
+				
+			}
+		}
+		for(String e:map.keySet())
+		{
+			int n = map.get(e);
+			total_count+=(n*(n-1))/2;
+		}
+		return total_count;
+	}
+	public static void main(String[] args) 
+	{
+		String s = "xyyx";
+		System.out.println(subString(s));
+	}
+}
