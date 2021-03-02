@@ -1,0 +1,28 @@
+import java.util.*;
+public class StringProblem 
+{
+	static int max_int = 26;
+    static int max=0;
+	public static String rearrangeCharacters(String S) 
+	{
+	    int count[] = new int[max_int];
+	    for(int i=0;i<S.length();i++)
+	    {
+	        count[S.charAt(i)-'a']++;
+	        if(max<count[S.charAt(i)-'a'])
+	        {
+	            max=count[S.charAt(i)-'a'];
+	        }
+	    }
+	    if(max<=S.length()-max+1)
+		       return new String("1");
+		   else
+		      return new String("0");
+	}
+	public static void main(String[] args) 
+	{
+		String S = "kkk";
+		
+		System.out.println(rearrangeCharacters(S));
+	}
+}
