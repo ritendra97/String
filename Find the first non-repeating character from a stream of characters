@@ -5,6 +5,45 @@ public class Practice
 	final static int MAX_CHAR = 256; 
 	  
     static void findFirstNonRepeating(String str) 
+    {
+    	HashMap<Character,Integer> map = new HashMap<>();
+    	Queue<Character> q = new LinkedList<>();
+    	
+    	for(int i=0;i<str.length();i++)
+    	{
+    		char ch = str.charAt(i);
+    		map.put(ch, map.getOrDefault(ch, 0)+1);
+    		if(map.get(ch)==1)
+    			q.add(ch);
+    		
+    		while(!q.isEmpty())
+    		{
+    			char ch1 = q.peek();
+    			if(map.get(ch1)==1)
+    				break;
+    			else
+    				q.remove();
+    		}
+    		if(q.isEmpty())
+    			System.out.println(-1+" ");
+    		else
+    			System.out.println(q.peek()+" ");
+    	}
+    }
+	public static void main(String[] args) 
+	{
+		String stream = "geeksforgeeksandgeeksquizfor";
+		findFirstNonRepeating(stream); 
+	}
+}
+
+
+import java.util.*;
+public class Practice 
+{
+	final static int MAX_CHAR = 256; 
+	  
+    static void findFirstNonRepeating(String str) 
     { 
     	List<Character> inDll = new ArrayList<Character>();
     	boolean repeated[] = new boolean[MAX_CHAR];
