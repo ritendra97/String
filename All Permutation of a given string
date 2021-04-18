@@ -1,4 +1,37 @@
 //All Permutation of a given string
+
+import java.util.*;
+// max in configuration
+public class Solution 
+{
+	public static void permutationUtil(String str, String asf)
+	{
+		if(str.length()==0)
+		{
+			System.out.println(asf);
+			return ;
+		}
+		for(int i=0;i<str.length();i++)
+		{
+			char c = str.charAt(i);
+			
+			String l = str.substring(0,i);
+			String r = str.substring(i+1);
+			String ts  = l+r;
+			permutationUtil(ts, c+asf);
+		}
+	}
+	public static void permutation(String str)
+	{
+		permutationUtil(str, "");
+	}
+	public static void main(String[] args) 
+	{	
+		permutation("abc");
+		
+    }
+}
+
 import java.util.*;
 public class Practice 
 {
